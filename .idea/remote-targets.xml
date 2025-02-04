@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="RemoteTargetsManager">
+    <targets>
+      <target name="pi@raspberry:22" type="ssh/sftp" uuid="3ca40741-a6ee-4d09-9b90-c649602c3dbb">
+        <config>
+          <option name="projectRootOnTarget" value="/home/pi/Se360-Project" />
+          <option name="serverName" value="pi@raspberry:22 password" />
+        </config>
+        <ContributedStateBase type="JavaLanguageRuntime">
+          <config>
+            <option name="javaVersionString" value="23.0.1" />
+          </config>
+        </ContributedStateBase>
+      </target>
+    </targets>
+  </component>
+</project>
