@@ -74,7 +74,7 @@ public class WatchlistPanel extends SimplePanel{
     private String data;
     private UiMainWindow uiMainWindow;
     private WatchilstTableModel tableModel;
-    private JTable watchlistTable;
+    private JScrollPane scrollPane;
     private JComboBox<Integer> ratingComboBox = new JComboBox<>(
             new Integer[]{0,1,2,3,4,5,6,7,8,9,10}
     );
@@ -84,46 +84,15 @@ public class WatchlistPanel extends SimplePanel{
     public WatchlistPanel(String data, UiMainWindow uiMainWindow) {
         super();
         this.uiMainWindow = uiMainWindow;
-//        this.data = data;
-//        WatchilstTableModel tableModel = new WatchilstTableModel();
-//        JSONArray jsonArray = new JSONArray(data);
-//        Object[] row = new Object[]{"Movie Name","Date Added","Rating","Status"};
-//        tableModel.addRow(row);
-//        for(int i = 0; i < jsonArray.length(); i++){
-//            row = new Object[5];
-//            JSONObject jsonObject = jsonArray.getJSONObject(i);
-//            row[4] = jsonObject.getString("movie_id");
-//            row[0] = jsonObject.getString("title");
-//            row[1] = jsonObject.getString("date_added");
-//            row[2] = jsonObject.getInt("user_rating");
-//            row[3] = jsonObject.getString("status");
-//            tableModel.addRow(row);
-//        }
-//        table = new JTable(tableModel);
-//        table.setRowHeight(30);
-//        TableColumnModel columns = table.getColumnModel();
-//        columns.getColumn(0).setMaxWidth(400);
-//        columns.getColumn(0).setMinWidth(400);
-//        columns.getColumn(1).setMaxWidth(230);
-//        columns.getColumn(1).setMinWidth(230);
-//        columns.getColumn(2).setMaxWidth(100);
-//        columns.getColumn(2).setMinWidth(100);
-//        TableColumn editableColumn = table.getColumnModel().getColumn(2);
-//        editableColumn.setCellEditor(new DefaultCellEditor(ratingComboBox));
-//        editableColumn = table.getColumnModel().getColumn(3);
-//        editableColumn.setCellEditor(new DefaultCellEditor(statusComboBox));
-        // Initializing the JTable
-//        table.setBackground(Color.gray);
-//        table.setFont(new Font(GLOBAL_FONT.getFontName(), Font.PLAIN, 22));
-//        panel.add(table, BorderLayout.NORTH);
-//        saveButton = new SimpleButton("Save");
-//        saveButton.getButton().addActionListener(new onSaveButtonClick());
-//        panel.add(saveButton.getButton(), BorderLayout.SOUTH);
         initialize(data);
         saveButton = new SimpleButton("Save");
         saveButton.getButton().addActionListener(new onSaveButtonClick());
         panel.add(table, BorderLayout.NORTH);
         panel.add(saveButton.getButton(), BorderLayout.SOUTH);
+        scrollPane = new JScrollPane();
+        scrollPane.setViewportView(panel);
+        scrollPane.createVerticalScrollBar();
+        scrollPane.getVerticalScrollBar().setUnitIncrement(20);
         display();
     }
     public void initialize(String data) {
